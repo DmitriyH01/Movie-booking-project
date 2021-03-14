@@ -169,6 +169,7 @@ html {
 .calendar_btn {
   text-align: center;
   text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.6);
   color: aliceblue;
 }
 
@@ -266,8 +267,8 @@ html {
 .hall_seat_input {
   position: absolute;
   -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   margin: 0;
   width: 30px;
   height: 30px;
