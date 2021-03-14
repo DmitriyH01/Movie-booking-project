@@ -1,0 +1,57 @@
+.calendar_wrap {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  align-items: center;
+  margin: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  list-style-type: none;
+}
+
+.calendar {
+  display: flex;
+  list-style-type: none;
+  padding-inline-start: 0px;
+  overflow: hidden;
+
+  &_item {
+    text-align: center;
+    font-size: 24px;
+    text-decoration: none;
+    padding: 15px;
+
+    &_link {
+      text-decoration: none;
+      margin: 5px;
+      color: aliceblue;
+
+      &:hover {
+        transition: text-decoration 0.5s;
+        color: $hover-color;
+      }
+
+      &:active {
+        color: $active-color;
+      }
+
+      & span {
+        margin: 2px;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  &_btn {
+    text-align: center;
+    text-decoration: none;
+    color: aliceblue;
+
+    &:hover {
+      border: 1px solid;
+      color: $hover-color;
+    }
+
+    &:active {
+      color: $active-color;
+    }
+  }
+}

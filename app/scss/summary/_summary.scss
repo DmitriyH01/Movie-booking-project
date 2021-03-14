@@ -1,0 +1,14 @@
+.summary {
+  background-image: url(../images/back-2.jpg);
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 20px;
+  letter-spacing: 1.5px;
+
+  &_inner {
+    background: rgba(0, 0, 0, 0.6);
+    color: aliceblue;
+    padding: 10px;
+    margin: 60px 20px 0px;
+  }
+}

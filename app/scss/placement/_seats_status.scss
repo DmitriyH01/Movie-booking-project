@@ -1,0 +1,40 @@
+.seats_status {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  order: 5;
+
+  &_item {
+    position: relative;
+    font-size: 22px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding: 40px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.seats_status_item::before {
+  content: " ";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  left: 10px;
+}
+
+.seats_available::before {
+  background: grey;
+}
+
+.seats_taken::before {
+  background: rgb(240, 57, 57);
+}
+
+.seats_selected::before {
+  background: blue;
+}

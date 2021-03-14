@@ -1,0 +1,7 @@
+$hover-color: darkturquoise;
+$active-color: rgb(6, 126, 128);
+
+@mixin choice-input {
+  appearance: none;
+  cursor: pointer;
+}

@@ -1,0 +1,56 @@
+.basket {
+  display: grid;
+  height: 200px;
+  background-color: rgb(126, 40, 40);
+  font-size: 22px;
+  place-items: center;
+
+  & span {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  & h4 {
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+
+  &_btn {
+    padding: 10px;
+    color: rgb(253, 253, 253);
+    border: 3px solid rgba(92, 0, 0, 0.4);
+  }
+
+  & input {
+    @include choice-input;
+
+    &:hover + label {
+      background-color: red;
+      transition: 1s;
+    }
+
+    &:focus + label {
+      border: 3px solid black;
+    }
+
+    &:checked + label {
+      background-color: rgb(240, 57, 57);
+      border: 3px solid black;
+    }
+  }
+}
+
+.message_wrapper {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  background-color: aquamarine;
+}
+
+.message_wrapper span {
+  font-size: 50px;
+}
