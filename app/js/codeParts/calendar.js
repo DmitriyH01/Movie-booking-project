@@ -47,7 +47,7 @@ function createMonth(date) {
   const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < tellsHowManyDaysInMonth(date); i++) {
-    let label = document.createElement("label");
+    const label = document.createElement("label");
     label.classList.add("calendar_item");
     label.innerHTML = `<input type ="radio" name = "date" id = ${tellsWhatDate(
       createDate(date, i)

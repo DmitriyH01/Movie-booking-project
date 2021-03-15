@@ -123,7 +123,6 @@ html {
           align-items: center;
   margin: 10px;
   background-color: rgba(0, 0, 0, 0.6);
-  list-style-type: none;
 }
 
 .calendar {
@@ -139,24 +138,22 @@ html {
 .calendar_item {
   text-align: center;
   font-size: 24px;
-  text-decoration: none;
   padding: 15px;
   color: aliceblue;
   cursor: pointer;
 }
 
 .calendar_item_input {
-  text-decoration: none;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  margin: 5px;
+  cursor: pointer;
 }
 
 .calendar_item_input:hover + span {
+  color: darkturquoise;
   -webkit-transition: 1s;
   transition: 1s;
-  color: darkturquoise;
 }
 
 .calendar_item_input:active + span {
@@ -199,6 +196,7 @@ html {
 
 .time_wrap_title {
   font-size: 24px;
+  text-transform: capitalize;
   font-weight: bolder;
   padding-left: 2em;
   color: aliceblue;
@@ -211,7 +209,6 @@ html {
   display: grid;
   -ms-grid-columns: (1fr)[4];
   grid-template-columns: repeat(4, 1fr);
-  list-style-type: none;
   -webkit-padding-start: 0px;
           padding-inline-start: 0px;
   padding-bottom: 10px;
@@ -219,21 +216,38 @@ html {
 
 .time_wrap_lists_item {
   text-align: center;
-}
-
-.time_wrap_lists_item a {
   font-size: 24px;
-  text-decoration: none;
+  padding: 15px;
   color: aliceblue;
+  cursor: pointer;
 }
 
-.time_wrap_lists_item a:active {
+.time_wrap_lists_item input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+}
+
+.time_wrap_lists_item input:hover + span {
+  color: darkturquoise;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.time_wrap_lists_item input:active + span {
   color: #067e80;
 }
 
-.time_wrap_lists_item a:hover {
-  border: 1px solid;
-  color: darkturquoise;
+.time_wrap_lists_item input:checked + span {
+  color: blue;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.time_wrap_lists_item input span {
+  margin: 2px;
+  letter-spacing: 1px;
 }
 
 .screen {

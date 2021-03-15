@@ -3,7 +3,7 @@
   padding: 15px;
   margin: 0 auto;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: $light-back;
   opacity: 0.8;
 
   & p {
@@ -23,7 +23,7 @@
   margin-right: auto;
   padding: 10px;
   border: rgb(216, 208, 208) solid;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: $light-back;
 
   &_seat {
     align-self: center;
@@ -39,7 +39,7 @@
       cursor: pointer;
 
       &:checked + .hall_seat_number {
-        background: blue;
+        background: $checked-color;
         font-weight: bold;
       }
       &:disabled + .hall_seat_number {

@@ -3,8 +3,7 @@
   grid-template-columns: 1fr 5fr 1fr;
   align-items: center;
   margin: 10px;
-  background-color: rgba(0, 0, 0, 0.6);
-  list-style-type: none;
+  background-color: $dark-back;
 }
 
 .calendar {
@@ -14,21 +13,14 @@
   overflow: hidden;
 
   &_item {
-    text-align: center;
-    font-size: 24px;
-    text-decoration: none;
-    padding: 15px;
-    color: aliceblue;
-    cursor: pointer;
+    @include choice-label;
 
     &_input {
-      text-decoration: none;
-      appearance: none;
-      margin: 5px;
+      @include choice-input;
 
       &:hover + span {
-        transition: 1s;
         color: $hover-color;
+        transition: 1s;
       }
 
       &:active + span {
@@ -36,13 +28,12 @@
       }
 
       &:checked + span {
-        color: blue;
+        color: $checked-color;
         transition: 1s;
       }
 
       & span {
-        margin: 2px;
-        letter-spacing: 1px;
+        @include choiceItem-text;
       }
     }
   }
@@ -50,11 +41,11 @@
   &_btn {
     text-align: center;
     text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: $dark-back;
     color: aliceblue;
     margin: 5px;
     opacity: 0.8;
-
+  
     &:hover {
       border: 1px solid;
       color: $hover-color;

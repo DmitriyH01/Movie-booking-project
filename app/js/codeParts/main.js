@@ -4,15 +4,13 @@ const main = document.querySelector("body");
 const filmName = "Monster Hunter";
 const priceOfTicket = 8;
 
-// init();
+init();
 
-// function init() {
-//   addDomElement(choiceSeatsWrapper);
-// }
+function init() {
+  addDomElement(choiceSeatsWrapper, createWrapperForChosenTickets());
+}
 
 /////////////                    init choice ticket
-
-
 
 /////////////////////////////////////////////////////////////////
 
@@ -31,8 +29,8 @@ function createWrapperForChosenTickets() {
     </div>`;
 }
 
-function addDomElement(element) {
-  element.insertAdjacentHTML("beforeEnd", createWrapperForChosenTickets());
+function addDomElement(container, element) {
+  container.insertAdjacentHTML("beforeEnd", element);
 }
 
 function createTicket(seatNumber) {
@@ -155,5 +153,4 @@ const answerAfterSelection = {
   yes: (place) => viewMassage(place, createConformBuyMassage()),
   no: (place) => viewMassage(place, createAbortMessage()),
 };
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////    end   /////////////////////////////////////////////////////
