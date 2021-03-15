@@ -141,27 +141,35 @@ html {
   font-size: 24px;
   text-decoration: none;
   padding: 15px;
-}
-
-.calendar_item_link {
-  text-decoration: none;
-  margin: 5px;
   color: aliceblue;
+  cursor: pointer;
 }
 
-.calendar_item_link:hover {
-  -webkit-transition: -webkit-text-decoration 0.5s;
-  transition: -webkit-text-decoration 0.5s;
-  transition: text-decoration 0.5s;
-  transition: text-decoration 0.5s, -webkit-text-decoration 0.5s;
+.calendar_item_input {
+  text-decoration: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  margin: 5px;
+}
+
+.calendar_item_input:hover + span {
+  -webkit-transition: 1s;
+  transition: 1s;
   color: darkturquoise;
 }
 
-.calendar_item_link:active {
+.calendar_item_input:active + span {
   color: #067e80;
 }
 
-.calendar_item_link span {
+.calendar_item_input:checked + span {
+  color: blue;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.calendar_item_input span {
   margin: 2px;
   letter-spacing: 1px;
 }
@@ -171,6 +179,8 @@ html {
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0.6);
   color: aliceblue;
+  margin: 5px;
+  opacity: 0.8;
 }
 
 .calendar_btn:hover {
@@ -404,6 +414,7 @@ html {
 }
 
 .seats_choice_list_input:focus + label {
+  background-color: #f03939;
   border: 3px solid black;
 }
 

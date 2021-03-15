@@ -4,11 +4,17 @@ const main = document.querySelector("body");
 const filmName = "Monster Hunter";
 const priceOfTicket = 8;
 
-init();
+// init();
 
-function init() {
-  addDomElement(choiceSeatsWrapper);
-}
+// function init() {
+//   addDomElement(choiceSeatsWrapper);
+// }
+
+/////////////                    init choice ticket
+
+
+
+/////////////////////////////////////////////////////////////////
 
 function createWrapperForChosenTickets() {
   return `  <div id="seatsChoice" class="seats_choice">

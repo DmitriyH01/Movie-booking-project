@@ -47,14 +47,15 @@ function createMonth(date) {
   const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < tellsHowManyDaysInMonth(date); i++) {
-    let li = document.createElement("li");
-    li.classList.add("calendar_item");
-    li.innerHTML = `<a href="#" class="calendar_item_link">
+    let label = document.createElement("label");
+    label.classList.add("calendar_item");
+    label.innerHTML = `<input type ="radio" name = "date" id = ${tellsWhatDate(
+      createDate(date, i)
+    )} class="calendar_item_input">
          <span>${tellsWhatDay(createDate(date, i))}
            <br>${tellsWhatDate(createDate(date, i))}
-         </span>
-                </a>`;
-    fragment.append(li);
+         </span>`;
+    fragment.append(label);
   }
   return fragment;
 }
@@ -76,7 +77,7 @@ btnWrap.addEventListener("click", function ({ target }) {
 });
 
 scrollDirection = {
-  right: (place) => (place.scrollLeft += 50),
-  left: (place) => (place.scrollLeft -= 50),
+  right: (place) => (place.scrollLeft += 80),
+  left: (place) => (place.scrollLeft -= 80),
 };
 ///////////////////////////////////////////////////////////////////////

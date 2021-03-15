@@ -42,6 +42,7 @@
       }
 
       &:focus + label {
+        background-color: rgb(240, 57, 57);
         border: 3px solid black;
       }
 

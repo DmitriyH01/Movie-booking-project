@@ -18,19 +18,26 @@
     font-size: 24px;
     text-decoration: none;
     padding: 15px;
+    color: aliceblue;
+    cursor: pointer;
 
-    &_link {
+    &_input {
       text-decoration: none;
+      appearance: none;
       margin: 5px;
-      color: aliceblue;
 
-      &:hover {
-        transition: text-decoration 0.5s;
+      &:hover + span {
+        transition: 1s;
         color: $hover-color;
       }
 
-      &:active {
+      &:active + span {
         color: $active-color;
+      }
+
+      &:checked + span {
+        color: blue;
+        transition: 1s;
       }
 
       & span {
@@ -45,6 +52,8 @@
     text-decoration: none;
     background-color: rgba(0, 0, 0, 0.6);
     color: aliceblue;
+    margin: 5px;
+    opacity: 0.8;
 
     &:hover {
       border: 1px solid;
