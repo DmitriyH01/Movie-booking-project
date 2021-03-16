@@ -9,22 +9,20 @@ let ticketListWrapper = null;
 let chosenTicketsList = null;
 let buyButton = null;
 
-///////////////       selection of tickets init     ///////////////////////////
+///////////////       selection of tickets init    //////////////////////////////
 
-function checksSelectedDate(dates) {
-  let selectDate = Array.prototype.some.call(
+function checksIfDateSelect(dates) {
+  return Array.prototype.some.call(
     dates.children,
     (el) => el.firstChild.checked === true
   );
-  return selectDate;
 }
 
-function checksSelectedTime(times) {
-  let selectTime = Array.prototype.some.call(
+function checksIfTimeSelect(times) {
+  return Array.prototype.some.call(
     times.children,
     (el) => el.firstChild.checked === true
   );
-  return selectTime;
 }
 
 function init() {
@@ -32,7 +30,7 @@ function init() {
 }
 
 sessionsWrap.addEventListener("change", function ({ target }) {
-  if (checksSelectedDate(calendar) !== true) {
+  if (checksIfDateSelect(calendar) !== true) {
     alert("Please select date");
     target.checked = false;
     return;
@@ -41,8 +39,8 @@ sessionsWrap.addEventListener("change", function ({ target }) {
     return;
   }
   if (
-    checksSelectedDate(calendar) === true &&
-    checksSelectedTime(sessionsWrap) === true
+    checksIfDateSelect(calendar) === true &&
+    checksIfTimeSelect(sessionsWrap) === true
   ) {
     init();
     ticketListWrapper = document.querySelector("#seatsChoice");
@@ -83,7 +81,7 @@ function addedTicket(ticketsList, chosenSeat) {
   ticketsList.insertAdjacentHTML("beforeEnd", createTicket(chosenSeat));
 }
 
-function tellsWhatSeatChosen(ticketsList, seat) {
+function getWhatSeatChosen(ticketsList, seat) {
   const basket = ticketsList.children;
   let chosen = null;
   for (let i = 0; i < basket.length; i++) {
@@ -101,7 +99,7 @@ function deleteTicket(ticketsList, chosenSeat) {
 const ticketMovement = {
   true: (ticketsList, ticket) => addedTicket(ticketsList, ticket.value),
   false: (ticketsList, ticket) =>
-    deleteTicket(ticketsList, tellsWhatSeatChosen(ticketsList, ticket)),
+    deleteTicket(ticketsList, getWhatSeatChosen(ticketsList, ticket)),
 };
 
 const visible = {
@@ -110,29 +108,30 @@ const visible = {
 };
 
 seatsInCinema.addEventListener("change", function ({ target }) {
-  if (checksSelectedDate(calendar) !== true) {
+  if (checksIfDateSelect(calendar) !== true) {
     alert("Please select date");
     target.checked = false;
     return;
-  } else if (checksSelectedTime(sessionsWrap) !== true) {
+  }
+  if (checksIfTimeSelect(sessionsWrap) !== true) {
     alert("Please select time");
     target.checked = false;
     return;
   }
 
   ticketMovement[target.checked](chosenTicketsList, target);
-  visible[!!countsNumberOfSelectedTickets(chosenTicketsList)](buyButton);
+  visible[!!getNumberOfSelectedTickets(chosenTicketsList)](buyButton);
 
   if (target.name === "buyButton") {
     answerAfterSelection[target.id](main);
   }
-  changeAfterSelectionTicket();
+  initLastConformingMassage();
 });
 
-function changeAfterSelectionTicket() {
+function initLastConformingMassage() {
   ticketListWrapper.addEventListener("change", function ({ target }) {
     visible[false](ticketListWrapper);
-    addBuyingMessage(seatsInCinema);
+    addLastConformingBuyMessage(seatsInCinema);
   });
 }
 
@@ -141,7 +140,7 @@ function freesUpSpace(item) {
   item.style.display = "block";
 }
 
-function createConformingBuyMessage(count, price) {
+function createLastConformingBuyMessage(count, price) {
   return `    <div id="basket" class="basket">
       <span>
         You buy ${count} ticket for ${price} $
@@ -154,26 +153,26 @@ function createConformingBuyMessage(count, price) {
     </div>`;
 }
 
-function addBuyingMessage(placeWhereAdd) {
+function addLastConformingBuyMessage(placeWhereAdd) {
   freesUpSpace(placeWhereAdd);
   placeWhereAdd.insertAdjacentHTML(
     "beforeEnd",
-    createConformingBuyMessage(
-      countsNumberOfSelectedTickets(chosenTicketsList),
-      calculatesCostOfTickets(
-        countsNumberOfSelectedTickets(chosenTicketsList),
+    createLastConformingBuyMessage(
+      getNumberOfSelectedTickets(chosenTicketsList),
+      getCostOfTickets(
+        getNumberOfSelectedTickets(chosenTicketsList),
         priceOfTicket
       )
     )
   );
 }
 
-function countsNumberOfSelectedTickets(ticketList) {
+function getNumberOfSelectedTickets(ticketList) {
   let numberOfTickets = ticketList.children.length;
   return numberOfTickets;
 }
 
-function calculatesCostOfTickets(amount, price) {
+function getCostOfTickets(amount, price) {
   const priceForChosenTickets = amount * price;
   return priceForChosenTickets;
 }
@@ -184,7 +183,7 @@ function viewMassage(place, massage) {
   place.insertAdjacentHTML("afterBegin", massage);
 }
 
-function createConformBuyMassage() {
+function createConfirmingMassage() {
   return `<div class="message_wrapper">
   <span>Thank for buying,wait confirming message</span>
 </div>`;
@@ -197,7 +196,7 @@ function createAbortMessage() {
 }
 
 const answerAfterSelection = {
-  yes: (place) => viewMassage(place, createConformBuyMassage()),
+  yes: (place) => viewMassage(place, createConfirmingMassage),
   no: (place) => viewMassage(place, createAbortMessage()),
 };
 ////////////////////////////    END   //////////////////////////////////

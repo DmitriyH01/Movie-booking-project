@@ -13,12 +13,12 @@ const daysOfWeek = {
   6: "Saturday",
 };
 
-function tellsWhatDay(date) {
+function getDay(date) {
   let dayOfWeek = daysOfWeek[date.getDay()];
   return dayOfWeek;
 }
 
-function tellsWhatDate(date) {
+function getDate(date) {
   let dayOfMonth = date.getDate();
   return dayOfMonth;
 }
@@ -37,7 +37,7 @@ function createDate(date, number) {
   return myDate;
 }
 
-function tellsHowManyDaysInMonth(date) {
+function getHowManyDaysInMonth(date) {
   const futureMonth = new Date(date.getFullYear(), date.getMonth(), 1);
   const nextMonth = new Date(date.getFullYear(), date.getMonth() + 1, 1);
   const howManyDay = Math.round((nextMonth - futureMonth) / 1000 / 3600 / 24);
@@ -48,25 +48,25 @@ function tellsHowManyDaysInMonth(date) {
 function createMonth(date) {
   const fragment = document.createDocumentFragment();
 
-  for (let i = 0; i < tellsHowManyDaysInMonth(date); i++) {
+  for (let i = 0; i < getHowManyDaysInMonth(date); i++) {
     const label = document.createElement("label");
     label.classList.add("calendar_item");
-    label.innerHTML = `<input type ="radio" name = "date" id = ${tellsWhatDate(
+    label.innerHTML = `<input type ="radio" name = "date" id = ${getDate(
       createDate(date, i)
     )} class="calendar_item_input">
-         <span>${tellsWhatDay(createDate(date, i))}
-           <br>${tellsWhatDate(createDate(date, i))}
+         <span>${getDay(createDate(date, i))}
+           <br>${getDate(createDate(date, i))}
          </span>`;
     fragment.append(label);
   }
   return fragment;
 }
 
-function addCalendar(item, fragment) {
-  item.append(fragment);
+function appendElements(container, inner) {
+  container.append(inner);
 }
 
-addCalendar(calendar, createMonth(futureDate));
+appendElements(calendar, createMonth(futureDate));
 
 //////////////////      scrolling dates with btn  /////////////////////
 

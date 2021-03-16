@@ -17,10 +17,6 @@ function createSessionsTime(timeOfSessions) {
   return fragment;
 }
 
-function appendElements(container, inner) {
-  container.append(inner);
-}
-
 appendElements(sessionsWrap, createSessionsTime(sessionsTime));
 
 //////////////////////////////////    END   /////////////////////////////
