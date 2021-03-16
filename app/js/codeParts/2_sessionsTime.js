@@ -1,4 +1,5 @@
-//////////////////////////// add time of sessions
+//////////////////////////// ADD TIME OF SESSIONS ////////////////////////
+
 const sessionsWrap = document.querySelector("#sessionsWrap");
 const sessionsTime = ["14:00", "17:30", "21:00", "23:20"];
 
@@ -16,9 +17,10 @@ function createSessionsTime(timeOfSessions) {
   return fragment;
 }
 
-function addSessionsTime(container, inner) {
+function appendElements(container, inner) {
   container.append(inner);
 }
 
-addSessionsTime(sessionsWrap, createSessionsTime(sessionsTime));
-//////////////////////////////////    end    /////////////////////////////
+appendElements(sessionsWrap, createSessionsTime(sessionsTime));
+
+//////////////////////////////////    END   /////////////////////////////

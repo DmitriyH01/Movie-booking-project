@@ -1,8 +1,9 @@
 $hover-color: darkturquoise;
 $active-color: rgb(6, 126, 128);
-$checked-color: blue;
+$checked-color: rgb(235, 186, 27);
 $light-back: rgba(255, 255, 255, 0.6);
 $dark-back: rgba(0, 0, 0, 0.6);
+$lightText-color: aliceblue;
 
 @mixin choice-input {
   appearance: none;

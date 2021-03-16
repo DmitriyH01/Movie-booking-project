@@ -1,18 +1,57 @@
+///////////////////////////     SELECTION OF TICKETS      /////////////////////
+
 const choiceSeatsWrapper = document.getElementById("tickets_wrapper");
 const seatsInCinema = document.querySelector("#cinemaHall");
 const main = document.querySelector("body");
 const filmName = "Monster Hunter";
 const priceOfTicket = 8;
+let ticketListWrapper = null;
+let chosenTicketsList = null;
+let buyButton = null;
 
-init();
+///////////////       selection of tickets init     ///////////////////////////
+
+function checksSelectedDate(dates) {
+  let selectDate = Array.prototype.some.call(
+    dates.children,
+    (el) => el.firstChild.checked === true
+  );
+  return selectDate;
+}
+
+function checksSelectedTime(times) {
+  let selectTime = Array.prototype.some.call(
+    times.children,
+    (el) => el.firstChild.checked === true
+  );
+  return selectTime;
+}
 
 function init() {
   addDomElement(choiceSeatsWrapper, createWrapperForChosenTickets());
 }
 
-/////////////                    init choice ticket
+sessionsWrap.addEventListener("change", function ({ target }) {
+  if (checksSelectedDate(calendar) !== true) {
+    alert("Please select date");
+    target.checked = false;
+    return;
+  }
+  if (ticketListWrapper !== null) {
+    return;
+  }
+  if (
+    checksSelectedDate(calendar) === true &&
+    checksSelectedTime(sessionsWrap) === true
+  ) {
+    init();
+    ticketListWrapper = document.querySelector("#seatsChoice");
+    chosenTicketsList = document.querySelector("#selectionsBuying");
+    buyButton = document.querySelector(".seats_choice_list_label");
+  }
+});
 
-/////////////////////////////////////////////////////////////////
+/////////////////////////////////////    end     ////////////////////////////
 
 function createWrapperForChosenTickets() {
   return `  <div id="seatsChoice" class="seats_choice">
@@ -65,29 +104,37 @@ const ticketMovement = {
     deleteTicket(ticketsList, tellsWhatSeatChosen(ticketsList, ticket)),
 };
 
-const chosenTicketsList = document.querySelector("#selectionsBuying");
-const buyButton = document.querySelector(".seats_choice_list_label");
-
 const visible = {
   true: (item) => (item.style.display = "block"),
   false: (item) => (item.style.display = "none"),
 };
 
 seatsInCinema.addEventListener("change", function ({ target }) {
+  if (checksSelectedDate(calendar) !== true) {
+    alert("Please select date");
+    target.checked = false;
+    return;
+  } else if (checksSelectedTime(sessionsWrap) !== true) {
+    alert("Please select time");
+    target.checked = false;
+    return;
+  }
+
   ticketMovement[target.checked](chosenTicketsList, target);
   visible[!!countsNumberOfSelectedTickets(chosenTicketsList)](buyButton);
 
   if (target.name === "buyButton") {
     answerAfterSelection[target.id](main);
   }
+  changeAfterSelectionTicket();
 });
 
-const ticketListWrapper = document.querySelector("#seatsChoice");
-
-ticketListWrapper.addEventListener("change", function ({ target }) {
-  visible[false](ticketListWrapper);
-  addBuyingMessage(seatsInCinema);
-});
+function changeAfterSelectionTicket() {
+  ticketListWrapper.addEventListener("change", function ({ target }) {
+    visible[false](ticketListWrapper);
+    addBuyingMessage(seatsInCinema);
+  });
+}
 
 function freesUpSpace(item) {
   item.innerHTML = null;
@@ -131,7 +178,7 @@ function calculatesCostOfTickets(amount, price) {
   return priceForChosenTickets;
 }
 
-/////////////////////////////// confirming buying ticket(s)
+/////////////////////////////// confirming buying ticket(s) ///////////
 
 function viewMassage(place, massage) {
   place.insertAdjacentHTML("afterBegin", massage);
@@ -153,4 +200,4 @@ const answerAfterSelection = {
   yes: (place) => viewMassage(place, createConformBuyMassage()),
   no: (place) => viewMassage(place, createAbortMessage()),
 };
-////////////////////////////    end   /////////////////////////////////////////////////////
+////////////////////////////    END   //////////////////////////////////

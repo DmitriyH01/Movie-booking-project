@@ -161,7 +161,7 @@ html {
 }
 
 .calendar_item_input:checked + span {
-  color: blue;
+  color: #ebba1b;
   -webkit-transition: 1s;
   transition: 1s;
 }
@@ -240,7 +240,7 @@ html {
 }
 
 .time_wrap_lists_item input:checked + span {
-  color: blue;
+  color: #ebba1b;
   -webkit-transition: 1s;
   transition: 1s;
 }
@@ -300,7 +300,7 @@ html {
 }
 
 .hall_seat_input:checked + .hall_seat_number {
-  background: blue;
+  background: #ebba1b;
   font-weight: bold;
 }
 
@@ -340,7 +340,7 @@ html {
   position: relative;
   font-size: 22px;
   background-color: black;
-  color: white;
+  color: aliceblue;
   -webkit-margin-before: 0em;
           margin-block-start: 0em;
   -webkit-margin-after: 0em;
@@ -369,7 +369,7 @@ html {
 }
 
 .seats_selected::before {
-  background: blue;
+  background: #ebba1b;
 }
 
 .seats_choice {
