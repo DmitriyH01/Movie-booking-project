@@ -1,0 +1,16 @@
+html {
+  margin: auto;
+  max-width: 1515px;
+}
+
+.container {
+  background: rgb(201, 201, 214);
+}
+
+@import "variables";
+@import "header";
+@import "main";
+@import "summary/summary";
+@import "placement/placement";
+@import "seatChoiceProcess/seat_choice_main";
+@import "media/media";

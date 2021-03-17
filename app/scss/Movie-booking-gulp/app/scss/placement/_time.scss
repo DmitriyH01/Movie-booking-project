@@ -1,0 +1,47 @@
+.time_wrap {
+  margin: 60px 10px;
+  background-color: $dark-back;
+
+  &_title {
+    font-size: 24px;
+    text-transform: capitalize;
+    font-weight: bolder;
+    padding-left: 2em;
+    color: $lightText-color;
+    letter-spacing: 4px;
+    padding-top: 10px;
+  }
+
+  &_lists {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding-inline-start: 0px;
+    padding-bottom: 10px;
+
+    &_item {
+      @include choice-label;
+
+      & input {
+        @include choice-input;
+
+        &:hover + span {
+          color: $hover-color;
+          transition: 1s;
+        }
+
+        &:active + span {
+          color: $active-color;
+        }
+
+        &:checked + span {
+          color: $checked-color;
+          transition: 1s;
+        }
+
+        & span {
+          @include choiceItem-text;
+        }
+      }
+    }
+  }
+}

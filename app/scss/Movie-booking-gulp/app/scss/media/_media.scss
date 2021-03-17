@@ -1,0 +1,29 @@
+@media only screen and (min-width: 480px) and (max-width: 920px) {
+  .container {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  .content {
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 750px;
+    gap: 0em;
+    margin: 0 auto;
+  }
+  .summary {
+    font-size: medium;
+
+    &_inner {
+      display: none;
+    }
+  }
+
+  .seats_choice {
+    height: 300px;
+
+    &_list_ticket {
+      width: 150px;
+      height: 100px;
+    }
+  }
+}

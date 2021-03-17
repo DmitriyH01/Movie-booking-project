@@ -1,5 +1,3 @@
-///////////////////////////     SELECTION OF TICKETS      /////////////////////
-
 const choiceSeatsWrapper = document.getElementById("tickets_wrapper");
 const seatsInCinema = document.querySelector("#cinemaHall");
 const main = document.querySelector("body");
@@ -8,8 +6,6 @@ const priceOfTicket = 8;
 let ticketListWrapper = null;
 let chosenTicketsList = null;
 let buyButton = null;
-
-///////////////       selection of tickets init    //////////////////////////////
 
 function checksIfDateSelect(dates) {
   return Array.prototype.some.call(
@@ -48,8 +44,6 @@ sessionsWrap.addEventListener("change", function ({ target }) {
     buyButton = document.querySelector(".seats_choice_list_label");
   }
 });
-
-/////////////////////////////////////    end     ////////////////////////////
 
 function createWrapperForChosenTickets() {
   return `  <div id="seatsChoice" class="seats_choice">
@@ -177,8 +171,6 @@ function getCostOfTickets(amount, price) {
   return priceForChosenTickets;
 }
 
-/////////////////////////////// confirming buying ticket(s) ///////////
-
 function viewMassage(place, massage) {
   place.insertAdjacentHTML("afterBegin", massage);
 }
@@ -199,4 +191,3 @@ const answerAfterSelection = {
   yes: (place) => viewMassage(place, createConfirmingMassage),
   no: (place) => viewMassage(place, createAbortMessage()),
 };
-////////////////////////////    END   //////////////////////////////////

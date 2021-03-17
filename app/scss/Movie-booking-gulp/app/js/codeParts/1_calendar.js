@@ -1,3 +1,5 @@
+////////////////////////////////// ADDING DATES TO CALENDAR ////////////////////
+
 const futureDate = new Date();
 const calendar = document.querySelector(".calendar");
 
@@ -12,24 +14,24 @@ const daysOfWeek = {
 };
 
 function getDay(date) {
-  const dayOfWeek = daysOfWeek[date.getDay()];
+  let dayOfWeek = daysOfWeek[date.getDay()];
   return dayOfWeek;
 }
 
 function getDate(date) {
-  const dayOfMonth = date.getDate();
+  let dayOfMonth = date.getDate();
   return dayOfMonth;
 }
 
 function createDate(date, number) {
-  const myDate = new Date(
+  let myDate = new Date(
     date.getFullYear(),
     date.getMonth(),
     date.getDate(),
     date.getDay()
   );
 
-  const numberDay = myDate.getDate() + number;
+  let numberDay = myDate.getDate() + number;
   myDate.setDate(numberDay);
 
   return myDate;
@@ -66,6 +68,8 @@ function appendElements(container, inner) {
 
 appendElements(calendar, createMonth(futureDate));
 
+//////////////////      scrolling dates with btn  /////////////////////
+
 const btnWrap = document.querySelector(".calendar_wrap");
 
 btnWrap.addEventListener("click", function ({ target }) {
@@ -78,4 +82,5 @@ scrollDirection = {
   right: (place) => (place.scrollLeft += 80),
   left: (place) => (place.scrollLeft -= 80),
 };
-
+///////////////////////////////////////////////////////////////////////
+/////////////////////////////  END ///////////////////////////////////
