@@ -1,5 +1,6 @@
 const choiceSeatsWrapper = document.getElementById("tickets_wrapper");
 const seatsInCinema = document.querySelector("#cinemaHall");
+const sessionsWrap = document.querySelector("#sessionsWrap");
 const main = document.querySelector("body");
 const filmName = "Monster Hunter";
 const priceOfTicket = 8;

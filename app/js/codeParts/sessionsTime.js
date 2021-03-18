@@ -1,4 +1,4 @@
-const sessionsWrap = document.querySelector("#sessionsWrap");
+
 const sessionsTime = ["14:00", "17:30", "21:00", "23:20"];
 
 function createSessionsTime(timeOfSessions) {
