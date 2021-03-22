@@ -1,0 +1,64 @@
+.screen {
+  width: 80%;
+  padding: 15px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: $light-back;
+  opacity: 0.8;
+
+  & p {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+.hall {
+  width: 400px;
+  margin: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  padding: 10px;
+  border: rgb(216, 208, 208) solid;
+  background-color: $light-back;
+
+  &_seat {
+    height: 30px;
+    width: 30px;
+    align-self: center;
+
+    &_input {
+      width: 30px;
+      height: 30px;
+      margin: 0;
+      position: absolute;
+      appearance: none;
+      cursor: pointer;
+
+      &:checked + .hall_seat_number {
+        background: $checked-color;
+        font-weight: bold;
+      }
+      &:disabled + .hall_seat_number {
+        background: rgb(240, 57, 57);
+        color: rgb(33, 0, 118);
+        font-weight: bold;
+      }
+    }
+
+    &_number {
+      width: 100%;
+      height: 100%;
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 30px;
+      background: rgb(95, 90, 90);
+      color: rgb(255, 255, 255);
+      transition: all ease-in-out 0.3s;
+    }
+  }
+}
