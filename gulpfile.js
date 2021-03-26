@@ -21,8 +21,9 @@ function convertsToCss() {
 }
 
 function scripts() {
-  return src("app/js/codeParts/*.js")
+  return src("app/js/modules/*.js")
     .pipe(concat("main.min.js"))
+    .pipe(uglifyEs())
     .pipe(dest("app/js/"))
     .pipe(browserSync.stream());
 }

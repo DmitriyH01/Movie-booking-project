@@ -1,16 +1,16 @@
-const conditionOfPlaces = new Object();
+const conditionOfPlaces = {};
 
-initSeats();
+compareConditionOfPlaces();
 
-function initSeats() {
-  const seats = createSeat(seatsCount, getRow, conditionOfPlaces);
+appendElements(seatsInCinema, createSeats(seatsCount, conditionOfPlaces));
+
+function compareConditionOfPlaces() {
   fillConditionOfPlaces(seatsCount, conditionOfPlaces);
   getReservedSeats(conditionOfPlaces, reservedSeats);
-  appendElements(seatsInCinema, seats);
 }
 
 function fillConditionOfPlaces(count, places) {
-  for (let key = 0; key < count; key++) {
+  for (let key = 1; key < count + 1; key++) {
     places[key] = key;
   }
   return places;
@@ -28,31 +28,32 @@ function getReservedSeats(allSeats, reserved) {
 
 function getRow(seat) {
   let row = null;
-  if (seat <= 9) {
+
+  if (seat <= 10) {
     row = 1;
-  } else if (seat <= 19) {
+  } else if (seat <= 20) {
     row = 2;
-  } else if (seat <= 29) {
+  } else if (seat <= 30) {
     row = 3;
-  } else if (seat <= 39) {
+  } else if (seat <= 40) {
     row = 4;
-  } else if (seat <= 49) {
+  } else if (seat <= 50) {
     row = 5;
   }
   return row;
 }
 
-function createSeat(counts, row, seats) {
+function createSeats(counts, seats) {
   const fragment = document.createDocumentFragment();
   for (let i = 1; i < counts + 1; i++) {
-    const state = "";
+    let state = "";
     if (seats[i] === "disabled") {
       state = seats[i];
     }
     const label = document.createElement("label");
     label.classList.add("hall_seat");
     label.innerHTML = `<input class="hall_seat_input" type="checkbox" 
-            ${state} value="Seat-${i}_Row-${row(i)}">
+            ${state} value="Seat-${i}_Row-${getRow(i)}">
             <span class="hall_seat_number">${i}</span>`;
     fragment.append(label);
   }

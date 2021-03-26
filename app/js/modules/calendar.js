@@ -49,9 +49,7 @@ function createMonth(date) {
     const newDate = getDate(createDate(date, i));
     const label = document.createElement("label");
     label.classList.add("calendar_item");
-    label.innerHTML = `<input type ="radio" name = "date" id = ${getDate(
-      createDate(date, i)
-    )} class="calendar_item_input">
+    label.innerHTML = `<input type ="radio" name = "date" id = ${newDate} class="calendar_item_input">
          <span>${day}
            <br>${newDate}
          </span>`;

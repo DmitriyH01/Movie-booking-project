@@ -1,7 +1,7 @@
 const choiceSeatsWrapper = document.getElementById("tickets_wrapper");
 const seatsInCinema = document.querySelector("#cinemaHall");
 const sessionsWrap = document.querySelector("#sessionsWrap");
-const main = document.querySelector("body");
+const bodyElement = document.querySelector("body");
 let ticketListWrapper = null;
 let chosenTicketsList = null;
 let buyButton = null;
@@ -18,15 +18,14 @@ function init() {
 }
 
 sessionsWrap.addEventListener("change", function ({ target }) {
-  if (!isElementSelected(calendar)) {
-    alert("Please select date");
-    target.checked = false;
-    return;
-  }
+  const selectedEl = isElementSelected;
   if (ticketListWrapper !== null) {
     return;
   }
-  if (isElementSelected(calendar) && isElementSelected(sessionsWrap)) {
+  if (!selectedEl(calendar)) {
+    noSelect.calendar(target);
+  }
+  if (selectedEl(calendar) && selectedEl(sessionsWrap)) {
     init();
     ticketListWrapper = document.querySelector("#seatsChoice");
     chosenTicketsList = document.querySelector("#selectionsBuying");
@@ -53,10 +52,27 @@ function addDomElement(container, element) {
   container.insertAdjacentHTML("beforeEnd", element);
 }
 
+function getSelectedSessionItem(items) {
+  let selectedItem = null;
+  Array.prototype.forEach.call(items.children, (element) => {
+    if (element.firstChild.checked) {
+      selectedItem = element.firstChild.id;
+      return;
+    }
+  });
+  return selectedItem;
+}
+
+const sessionInfo = {
+  date: () => getSelectedSessionItem(calendar),
+  time: () => getSelectedSessionItem(sessionsWrap),
+};
+
 function createTicket(seatNumber) {
   return ` <li data-ticket = ${seatNumber} class="seats_choice_list_ticket">
               <h4>${filmName}</h4>
-              <span>${seatNumber}</span>
+              <span>${seatNumber}</span><br>
+              <span>date ${sessionInfo.date()} time ${sessionInfo.time()} </span>
             </li>`;
 }
 
@@ -67,11 +83,11 @@ function addTicket(ticketsList, chosenSeat) {
 function getChosenSeat(ticketsList, seat) {
   const basket = ticketsList.children;
   let chosen = null;
-  for (let i = 0; i < basket.length; i++) {
-    if (basket[i].dataset.ticket === seat.value) {
-      chosen = basket[i];
+  Array.prototype.some.call(basket, function (el) {
+    if (el.dataset.ticket === seat.value) {
+      chosen = el;
     }
-  }
+  });
   return chosen;
 }
 
@@ -93,35 +109,53 @@ function hideElement(element) {
   element.style.display = "none";
 }
 
-const visibleElement = {
-  true: (element) => showElement(element),
-  false: (element) => hideElement(element),
-};
-
-seatsInCinema.addEventListener("change", function ({ target }) {
-  if (!isElementSelected(calendar)) {
+const noSelect = {
+  calendar: (target) => {
     alert("Please select date");
     target.checked = false;
     return;
-  }
-  if (!isElementSelected(sessionsWrap)) {
+  },
+  sessionsWrap: (target) => {
     alert("Please select time");
     target.checked = false;
     return;
+  },
+};
+
+seatsInCinema.addEventListener("change", function ({ target }) {
+  const { name, id, checked } = target;
+  const selectedEl = isElementSelected;
+  const ticketMove = ticketMovement[checked];
+  const conformingChoice = selectedEl(calendar) && selectedEl(sessionsWrap);
+
+  if (!selectedEl(calendar)) {
+    noSelect.calendar(target);
+  } else if (!selectedEl(sessionsWrap)) {
+    noSelect.sessionsWrap(target);
   }
 
-  ticketMovement[target.checked](chosenTicketsList, target);
-  visibleElement[!!getNumberOfSelectedTickets(chosenTicketsList)](buyButton);
+  if (conformingChoice) {
+    ticketMove(chosenTicketsList, target);
 
-  if (target.name === "buyButton") {
-    answerAfterSelection[target.id](main);
+    const ticketChosen = getNumberOfSelectedTickets(chosenTicketsList);
+
+    if (!!ticketChosen) {
+      showElement(buyButton);
+    } else if (!ticketChosen) {
+      hideElement(buyButton);
+    }
+
+    if (name === "buyButton") {
+      answerAfterSelection[id](bodyElement);
+    }
+
+    initLastConformingMassage();
   }
-  initLastConformingMassage();
 });
 
 function initLastConformingMassage() {
   ticketListWrapper.addEventListener("change", function () {
-    visibleElement[false](ticketListWrapper);
+    hideElement(ticketListWrapper);
     addLastConformingBuyMessage(seatsInCinema);
   });
 }
@@ -168,16 +202,18 @@ function viewMassage(place, massage) {
 function createConfirmingMassage() {
   return `<div class="message_wrapper">
   <span>Thank for buying,wait confirming message</span>
+   <a href ="#" onClick="window.location.reload()">Go to ticket selection</a>
 </div>`;
 }
 
 function createAbortMessage() {
   return `<div class="message_wrapper">
   <span>Thank for visiting our site, please come back next time </span>
+   <a href ="#" onClick="window.location.reload()">Go to ticket selection</a>
 </div>`;
 }
 
 const answerAfterSelection = {
-  yes: (place) => viewMassage(place, createConfirmingMassage),
+  yes: (place) => viewMassage(place, createConfirmingMassage()),
   no: (place) => viewMassage(place, createAbortMessage()),
 };
