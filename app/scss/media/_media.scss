@@ -1,16 +1,18 @@
-@media only screen and (min-width: 480px) and (max-width: 920px) {
+@media only screen and (min-width: 510px) and (max-width: 920px) {
   .container {
     max-width: 750px;
     margin: 0 auto;
   }
 
   .content {
-    grid-template-columns: repeat(1, 1fr);
     max-width: 750px;
-    gap: 0em;
     margin: 0 auto;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0em;
+    order: 1;
   }
   .summary {
+    order: 2;
     font-size: medium;
 
     &_inner {
@@ -19,11 +21,150 @@
   }
 
   .seats_choice {
-    height: 300px;
+    height: 350px;
+    &_list {
+      grid-template-columns: repeat(2, 1fr);
 
-    &_list_ticket {
-      width: 150px;
-      height: 100px;
+      &_ticket {
+        width: 200px;
+        height: 100px;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 509px) {
+  body {
+    margin: 0px;
+  }
+
+  .container {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 20px;
+    left: 12px;
+    background-color: inherit;
+  }
+
+  .content {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0px;
+  }
+
+  .placement {
+    height: 100%;
+  }
+
+  .navigation {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    position: absolute;
+
+    &_items {
+      height: 500px;
+      width: 200px;
+      position: relative;
+      top: 70px;
+      display: none;
+      grid-template-rows: repeat(4, 1fr);
+      grid-template-columns: 0;
+      background: linear-gradient(90deg, #776d6a 1%, #c9c9d6 100%);
+      z-index: 1;
+    }
+
+    &_item {
+      width: 200px;
+      position: relative;
+      left: 100px;
+    }
+
+    .popup {
+      display: block;
+      width: 40px;
+      position: absolute;
+      top: -20px;
+
+      & input {
+        appearance: none;
+        cursor: pointer;
+
+        &:checked + img {
+          border: solid 3px $checked-color;
+        }
+      }
+
+      & img {
+        width: 40px;
+        height: 40px;
+        border: solid 3px $light-text-color;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  .time_wrap {
+    margin: 10px;
+
+    &_lists_item {
+      font-size: 18px;
+    }
+  }
+
+  .hall {
+    width: calc(100% - 2%);
+    padding: 0px;
+    margin: 10px 0px;
+    gap: 2px;
+
+    &_seat {
+      width: 25px;
+      height: 25px;
+
+      &_number {
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+      }
+      &_input {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+
+  .seats_status_item {
+    padding: 20px;
+    font-size: 16px;
+
+    &::before {
+      width: 20px;
+      height: 20px;
+      left: 0px;
+    }
+  }
+
+  .summary {
+    height: 100%;
+    order: 2;
+    font-size: medium;
+
+    &_inner {
+      display: none;
+    }
+  }
+
+  .seats_choice {
+    height: 350px;
+
+    &_list {
+      grid-template-columns: 1;
+
+      &_ticket {
+        width: 200px;
+        height: 100px;
+      }
     }
   }
 }

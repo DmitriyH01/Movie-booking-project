@@ -52,27 +52,34 @@ function addDomElement(container, element) {
   container.insertAdjacentHTML("beforeEnd", element);
 }
 
-function getSelectedSessionItem(items) {
-  let selectedItem = null;
-  Array.prototype.forEach.call(items.children, (element) => {
-    if (element.firstChild.checked) {
-      selectedItem = element.firstChild.id;
-      return;
-    }
+function getSelectedDateInfo(dates) {
+  const selected = Array.prototype.find.call(dates.children, (el) => {
+    return el.firstChild.checked;
   });
-  return selectedItem;
+  if (!selected) {
+    return "";
+  }
+  const date = selected.firstChild;
+  return `${date.id}/${date.dataset.month}`;
 }
 
-const sessionInfo = {
-  date: () => getSelectedSessionItem(calendar),
-  time: () => getSelectedSessionItem(sessionsWrap),
-};
+function getSelectedTimeInfo(times) {
+  const selected = Array.prototype.find.call(times.children, (el) => {
+    return el.firstChild.checked;
+  });
+  if (!selected) {
+    return "";
+  }
+  return selected.firstChild.id;
+}
 
 function createTicket(seatNumber) {
   return ` <li data-ticket = ${seatNumber} class="seats_choice_list_ticket">
               <h4>${filmName}</h4>
               <span>${seatNumber}</span><br>
-              <span>date ${sessionInfo.date()} time ${sessionInfo.time()} </span>
+              <span>date ${getSelectedDateInfo(
+                calendar
+              )} time ${getSelectedTimeInfo(sessionsWrap)} </span>
             </li>`;
 }
 

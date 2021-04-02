@@ -20,6 +20,10 @@ function getDate(date) {
   return date.getDate();
 }
 
+function getMonth(date) {
+  return date.getMonth() + 1;
+}
+
 function createDate(date, number) {
   const myDate = new Date(
     date.getFullYear(),
@@ -47,9 +51,10 @@ function createMonth(date) {
   for (let i = 0; i < getCountDaysInMonth(date); i++) {
     const day = getDay(createDate(date, i));
     const newDate = getDate(createDate(date, i));
+    const month = getMonth(createDate(date, i));
     const label = document.createElement("label");
     label.classList.add("calendar_item");
-    label.innerHTML = `<input type ="radio" name = "date" id = ${newDate} class="calendar_item_input">
+    label.innerHTML = `<input type ="radio" name = "date" data-month =${month}  id = ${newDate} class="calendar_item_input">
          <span>${day}
            <br>${newDate}
          </span>`;

@@ -1,4 +1,4 @@
-.top {
+.header {
   width: 100%;
   background: linear-gradient(
     90deg,
@@ -23,8 +23,8 @@
   }
 
   &_item {
-    display: grid;
     width: 100%;
+    display: grid;
     padding-top: 25px;
     padding-bottom: 25px;
     align-self: center;
@@ -53,7 +53,7 @@
       text-align: center;
     }
 
-    &_chosen {
+    &_selected {
       font-weight: 700;
       border: 10px solid;
       border-radius: 10px;
@@ -61,5 +61,9 @@
       border-right-style: none;
       opacity: 1;
     }
+  }
+
+  .popup {
+    display: none;
   }
 }

@@ -1,9 +1,9 @@
 .basket {
-  display: grid;
   height: 200px;
+  display: grid;
+  place-items: center;
   background-color: rgb(126, 40, 40);
   font-size: 22px;
-  place-items: center;
 
   & span {
     color: rgb(255, 255, 255);

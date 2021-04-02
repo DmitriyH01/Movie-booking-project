@@ -3,7 +3,7 @@ $active-color: rgb(6, 126, 128);
 $checked-color: rgb(235, 186, 27);
 $light-back: rgba(255, 255, 255, 0.6);
 $dark-back: rgba(0, 0, 0, 0.6);
-$lightText-color: aliceblue;
+$light-text-color: aliceblue;
 
 @mixin choice-input {
   appearance: none;
@@ -11,14 +11,14 @@ $lightText-color: aliceblue;
 }
 
 @mixin choice-label {
+  padding: 15px;
   text-align: center;
   font-size: 24px;
-  padding: 15px;
   color: aliceblue;
   cursor: pointer;
 }
 
-@mixin choiceItem-text {
+@mixin choice-item-text {
   margin: 2px;
   letter-spacing: 1px;
 }

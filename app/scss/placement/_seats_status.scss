@@ -5,14 +5,14 @@
   order: 5;
 
   &_item {
+    padding: 30px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    text-align: center;
     position: relative;
     font-size: 22px;
     background-color: rgb(0, 0, 0);
-    color: $lightText-color;
-    margin-block-start: 0em;
-    margin-block-end: 0em;
-    padding: 30px;
-    text-align: center;
+    color: $light-text-color;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -20,11 +20,11 @@
 }
 
 .seats_status_item::before {
-  content: " ";
-  position: absolute;
   width: 30px;
   height: 30px;
   left: 10px;
+  position: absolute;
+  content: " ";
 }
 
 .seats_available::before {

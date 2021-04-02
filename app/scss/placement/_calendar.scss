@@ -33,19 +33,19 @@
       }
 
       & span {
-        @include choiceItem-text;
+        @include choice-item-text;
       }
     }
   }
 
   &_btn {
+    margin: 5px;
     text-align: center;
     text-decoration: none;
     background-color: $dark-back;
-    color:$lightText-color;
-    margin: 5px;
+    color: $light-text-color;
     opacity: 0.8;
-  
+
     &:hover {
       border: 1px solid;
       color: $hover-color;
