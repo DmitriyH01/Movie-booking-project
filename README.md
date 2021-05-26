@@ -16,7 +16,7 @@ I mastered :
 - @media
 ---
 ### Instructions for building and running the project
-- first what you need instaled [NodeJS](https://nodejs.org/en/)
+- first what you need instaled [NodeJS](https://nodejs.org/en/) and [GULP](https://gulpjs.com/docs/en/getting-started/quick-start)
 - copy folder with [project](https://github.com/DmitriyH01/Movie-booking-project) to your local storage or `gh repo clone DmitriyH01/Movie-booking-project` from terminal
 - `npm install` in terminal to install dependencies 
 - use `gulp` to launch dev server, app would be served att  http://localhost:3000/
