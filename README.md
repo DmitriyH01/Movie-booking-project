@@ -22,4 +22,4 @@ I mastered :
 - use `gulp` to launch dev server, app would be served att  http://localhost:3000/
 - use `gulp build` for compare project into **dist** folder
 ---
-### [Demo](https://DmitriyH01.github.io/Movie-seat-booking/) 
+
